@@ -25,6 +25,7 @@ class KNearestNeighbors():
       return prediction[0][0]
 
     def fit(self,X_train,y_train):
+        from sklearn.metrics import accuracy_score
         self.X_train = X_train
         predictions = []
         # For the current entry in the training dataset:
