@@ -31,7 +31,8 @@ class LinearRegression():
     actual_iters = 0 
     previous_error = float('inf'); count = 0
     self.X_train = X_train; self.y_train = y_train 
-    self.weights = [30 for x in range(len(self.X_train[0]))]
+    # choose a random value for initializing the weights -> 30
+    self.weights = [30 for x in range(len(self.X_train[0]))] 
     for _ in range(self.n_iters):
       predictions = []
       actual_iters += 1
