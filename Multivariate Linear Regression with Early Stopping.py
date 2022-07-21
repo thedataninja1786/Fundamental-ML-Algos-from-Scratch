@@ -8,7 +8,7 @@ class LinearRegression():
     self.bias = 10
   
   @staticmethod 
-  def _RMSE(Y,predictions):
+  def _RMSE(Y,predictions) -> float:
     rmse = 0 
     for y,pred in zip(Y,predictions):
       rmse += (y-pred) ** 2
