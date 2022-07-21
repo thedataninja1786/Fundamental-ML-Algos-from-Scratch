@@ -21,7 +21,7 @@ class LinearRegression():
       weight_error = 0; bias_error = 0  
       for i in range(len(self.X_train)):
         weight_error += (-self.X_train[i][j]) * (self.y_train[i] - predictions[i])
-        bias_error += (Y[i] - predictions[i])
+        bias_error += (self.y_train[i] - predictions[i])
       weight -= (2 * weight_error / len(self.y_train)) * self.lr
       self.bias -= bias_error * self.lr
       new_weights.append(weight)
