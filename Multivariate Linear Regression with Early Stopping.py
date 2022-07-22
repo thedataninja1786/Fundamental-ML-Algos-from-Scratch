@@ -32,8 +32,8 @@ class LinearRegression():
     previous_error = float('inf'); not_improving = 0
     self.X_train = X_train; self.y_train = y_train 
     # Initialize random weights
-    
     self.weights = [1 for x in range(len(self.X_train[0]))] 
+    
     for iter in range(self.n_iters):
       predictions = []
       actual_iters += 1
