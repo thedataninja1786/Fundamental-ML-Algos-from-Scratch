@@ -1,5 +1,7 @@
+import numpy as np
+import random 
+
 class KMeansClustering():
-  import numpy as np
   def __init__(self, n_clusters, X, n_iters):
     self.n_clusters = n_clusters
     self.X = X
