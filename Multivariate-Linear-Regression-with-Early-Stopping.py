@@ -3,7 +3,7 @@ class LinearRegression():
     self.n_iters = n_iters
     self.lr = lr
     self.weights = None 
-    self.bias = 1
+    self.bias = None
   
   @staticmethod 
   def _RMSE(Y,predictions) -> float:
