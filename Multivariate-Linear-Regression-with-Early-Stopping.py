@@ -15,7 +15,7 @@ class LinearRegression():
   def fit(self,X_train,y_train) -> None:
     actual_iters = 0 
     previous_error = float('inf'); not_improving = 0
-    m = 1 / len(X_train)
+    m = len(X_train)
     # Initialize the weights and bias with random values 
     self.weights = [5 for x in range(len(X_train[0]))]
     self.bias = 0.5 
