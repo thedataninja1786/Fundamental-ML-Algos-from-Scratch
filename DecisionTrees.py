@@ -6,12 +6,12 @@ class Node():
                      info_gain=None,
                      value=None):
     
-      self.feature_index = feature_index
-      self.threshold = threshold
-      self.left = left
-      self.right = right
-      self.info_gain = info_gain
-      self.value = value
+    self.feature_index = feature_index
+    self.threshold = threshold
+    self.left = left
+    self.right = right
+    self.info_gain = info_gain
+    self.value = value
 
 
 class DecisionTree():
