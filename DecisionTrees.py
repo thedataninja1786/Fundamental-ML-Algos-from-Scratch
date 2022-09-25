@@ -12,7 +12,8 @@ class Node():
       self.right = right
       self.info_gain = info_gain
       self.value = value
-  
+
+
 class DecisionTree():
   def __init__(self, X_train, y_train, min_samples = 3, max_depth = 3):
     self.root_node = None 
@@ -78,17 +79,17 @@ class DecisionTree():
     leaf_label = max(y, key = y.count)
     return Node(value = leaf_label)
 
-  def _make_predictions(self,x,tree):
+  def _predictions(self,x,tree):
     if tree.value != None: return tree.value 
     feature_val = x[tree.feature_index]
     if feature_val <= tree.threshold:
-      return self._make_predictions(x,tree.left)
+      return self._predictions(x,tree.left)
     else:
-      return self._make_predictions(x, tree.right)
+      return self._predictions(x, tree.right)
 
   def fit(self):
     self.root_node = self._build_tree(self.X,self.Y,depth = 1)
     
   def predict(self,X_test):
-    predictions = [self._make_predictions(x, self.root_node) for x in X_test]
+    predictions = [self._predictions(x, self.root_node) for x in X_test]
     return predictions 
