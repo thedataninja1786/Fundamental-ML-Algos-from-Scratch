@@ -10,7 +10,7 @@ class LogisticRegression():
     return sum([1 for pred,y in zip(predictions,Y) if pred == y]) / len(Y)
 
   def fit(self,X_train,y_train) -> None:
-    m = 1 / len(X_train)
+    m = len(X_train)
     # Initialize the weights and bias with random values 
     self.weights = [5 for x in range(len(X_train[0]))]
     self.bias = 0.5 
