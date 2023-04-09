@@ -25,9 +25,9 @@ class LinearRegression():
       for p,y in zip(X_train,y_train):
           gradients = []; y_hat = 0
           for weight, x in zip(self.weights,p):
-              prediction += x * weight
-          prediction += self.bias
-          predictions.append(prediction)
+              y_hat += x * weight
+          y_hat += self.bias
+          predictions.append(y_hat)
 
           for j in range(len(self.weights)):
               # Calculate derivatives
@@ -39,7 +39,7 @@ class LinearRegression():
               self.weights[i] -= g
 
           # Update bias
-          self.bias -= (1 / m) * (prediction - actual) * self.lr
+          self.bias -= (1 / m) * (y_hat - Y) * self.lr
 
       current_error = self._RMSE(y_train,predictions)
       # Stope early if the model does not improve after the nth consecutive iteration
@@ -54,7 +54,7 @@ class LinearRegression():
     print(self.weights)
     print(f'After {actual_iters} iterations the LM was fitted with a {round(self._RMSE(y_train,predictions),2)} RMSE.')
 
-  def predict(self,X_test,y_test) -> list:
+  def predict(self,X_test) -> list:
     predictions = []
     for i in range(len(X_test)):
       pred = 0 
