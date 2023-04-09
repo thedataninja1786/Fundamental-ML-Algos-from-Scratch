@@ -22,23 +22,21 @@ class LinearRegression():
 
     for iter in range(self.n_iters):
       predictions = []
-      for features, label in zip(X_train,y_train):
-          derivatives = []
-          prediction = 0
-          actual = label 
-          for weight, feature in zip(self.weights,features):
-              prediction += feature * weight
+      for x, y in zip(X_train,y_train):
+          gradients = []; prediction = 0
+          for weight, x in zip(self.weights,features):
+              prediction += x * weight
           prediction += self.bias
           predictions.append(prediction)
 
-          for i in range(len(self.weights)):
+          for j in range(len(self.weights)):
               # Calculate derivatives
-              dw = (1 / m) * (features[i] * (prediction - actual)) * self.lr
-              derivatives.append(dw)
+              dw = (1 / m) * (x[j] * (prediction - actual)) * self.lr
+              gradients.append(dw)
 
-          for i, derivative in enumerate(derivatives):
+          for i, g in enumerate(gradients):
               # Update weights
-              self.weights[i] -= derivative
+              self.weights[i] -= g
 
           # Update bias
           self.bias -= (1 / m) * (prediction - actual) * self.lr
