@@ -24,8 +24,8 @@ class LinearRegression():
       predictions = []
       for p,y in zip(X_train,y_train):
           gradients = []; y_hat = 0
-          for weight, x in zip(self.weights,p):
-              y_hat += x * weight
+          for w,x in zip(self.weights,p):
+              y_hat += w * x
           y_hat += self.bias
           predictions.append(y_hat)
 
@@ -51,7 +51,7 @@ class LinearRegression():
         if not_improving > 20: break 
       if iter % 500 == 0: # check on progress 
         print(f'At iteration {iter} the RMSE is {round(self._RMSE(y_train,predictions),2)}.')
-    print(self.weights)
+    #print(self.weights)
     print(f'After {actual_iters} iterations the LM was fitted with a {round(self._RMSE(y_train,predictions),2)} RMSE.')
 
   def predict(self,X_test) -> list:
