@@ -22,16 +22,16 @@ class LinearRegression():
 
     for iter in range(self.n_iters):
       predictions = []
-      for x, y in zip(X_train,y_train):
-          gradients = []; prediction = 0
-          for weight, x in zip(self.weights,features):
+      for p,y in zip(X_train,y_train):
+          gradients = []; y_hat = 0
+          for weight, x in zip(self.weights,p):
               prediction += x * weight
           prediction += self.bias
           predictions.append(prediction)
 
           for j in range(len(self.weights)):
               # Calculate derivatives
-              dw = (1 / m) * (x[j] * (prediction - actual)) * self.lr
+              dw = (1 / m) * (p[j] * (y_hat - y)) * self.lr
               gradients.append(dw)
 
           for i, g in enumerate(gradients):
