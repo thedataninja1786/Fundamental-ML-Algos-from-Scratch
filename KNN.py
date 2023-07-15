@@ -1,3 +1,6 @@
+from collections import Counter
+from sklearn.metrics import accuracy_score
+
 class KNearestNeighbors():
     def __init__(self,k):
         self.k = k 
@@ -14,9 +17,10 @@ class KNearestNeighbors():
 
 
     def _predict(self,classes,distances,k):
-      from collections import Counter
-      # Sort in descending order the distances and retrieve their index 
-      # which maps to their respective class 
+      """
+      Sort in descending order the distances and retrieve their index 
+      which maps to their respective class.
+      """ 
       idxs = sorted(range(len(distances)),key = lambda x:distances[x])[:self.k] 
       # Find the class for each neighbor  
       neighbors = [self.classes[idx] for idx in idxs]
@@ -25,7 +29,6 @@ class KNearestNeighbors():
       return prediction[0][0]
 
     def fit(self,X_train,y_train):
-        from sklearn.metrics import accuracy_score
         self.X_train = X_train
         predictions = []
         # For the current entry in the training dataset:
